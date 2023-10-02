@@ -29,7 +29,7 @@ public class Measure {
 	private MeasureType type;
 	@NotNull
 	@Column(name = "measure_date")
-	@JsonFormat(pattern =  "dd/MM/yyyy 00:00:00")
+	@JsonFormat(pattern =  "dd/MM/yyyy")
 	private LocalDate measure_date;
 	@NotNull
 	private Double measure;

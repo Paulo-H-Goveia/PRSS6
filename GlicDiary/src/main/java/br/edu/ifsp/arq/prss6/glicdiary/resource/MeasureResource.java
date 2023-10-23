@@ -23,53 +23,53 @@ import br.edu.ifsp.arq.prss6.glicdiary.repository.MeasureRepository;
 import br.edu.ifsp.arq.prss6.glicdiary.service.MeasureService;
 
 @RestController
-@RequestMapping("/activities")
+@RequestMapping("/measures")
 public class MeasureResource {
 
 	@Autowired
-	private MeasureRepository activityRepository;
+	private MeasureRepository measureRepository;
 	
 	@Autowired
-	private MeasureService activityService;
+	private MeasureService measureService;
 	
 	@GetMapping
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_MEASURE') and #oauth2.hasScope('read')")
 	public List<Measure> list(){
-		return activityRepository.findAll();
+		return measureRepository.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_MEASURE') and #oauth2.hasScope('read')")
 	public ResponseEntity<Measure> findById(@PathVariable Long id){
-		Optional<Measure> activity = 
-				activityRepository.findById(id);
-		if(activity.isPresent()) {
-			return ResponseEntity.ok(activity.get());
+		Optional<Measure> measure = 
+				measureRepository.findById(id);
+		if(measure.isPresent()) {
+			return ResponseEntity.ok(measure.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
 	
 	@GetMapping("/user/{email}")
-	@PreAuthorize("hasAuthority('ROLE_SEARCH_ACTIVITY') and #oauth2.hasScope('read')")
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_MEASURE') and #oauth2.hasScope('read')")
 	public ResponseEntity<List<Measure>> listByUser(@PathVariable String email){
-		List<Measure> activities = activityService.listByUser(email);
-		if(!activities.isEmpty()) {
-			return ResponseEntity.ok(activities);
+		List<Measure> measures = measureService.listByUser(email);
+		if(!measures.isEmpty()) {
+			return ResponseEntity.ok(measures);
 		}
 		return ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_ACTIVITY') and #oauth2.hasScope('write')")
-	public Measure create(@Valid @RequestBody Measure activity) {
-		return activityService.save(activity);
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_MEASURE') and #oauth2.hasScope('write')")
+	public Measure create(@Valid @RequestBody Measure measure) {
+		return measureService.save(measure);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@PreAuthorize("hasAuthority('ROLE_REMOVE_ACTIVITY') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_MEASURE') and #oauth2.hasScope('write')")
 	public void remover(@PathVariable Long id) {
-		activityRepository.deleteById(id);
+		measureRepository.deleteById(id);
 	}
 }

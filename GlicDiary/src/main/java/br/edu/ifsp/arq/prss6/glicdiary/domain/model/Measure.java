@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
-@Table(name = "activity")
+@Table(name = "measure")
 public class Measure {
 	
 	@Id
@@ -30,13 +30,11 @@ public class Measure {
 	@Enumerated(EnumType.STRING)
 	private MeasureType type;
 	@NotNull
-	@Column(name = "activity_date")
+	@Column(name = "measure_date")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate date;
 	@NotNull
-	private Double distance; //Km
-	@NotNull
-	private Integer duration; //minutos
+	private Double measure;
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -60,17 +58,11 @@ public class Measure {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	public Double getDistance() {
-		return distance;
+	public Double getMeasure() {
+		return measure;
 	}
-	public void setDistance(Double distance) {
-		this.distance = distance;
-	}
-	public Integer getDuration() {
-		return duration;
-	}
-	public void setDuration(Integer duration) {
-		this.duration = duration;
+	public void setMeasure(Double measure) {
+		this.measure = measure;
 	}
 	public User getUser() {
 		return user;

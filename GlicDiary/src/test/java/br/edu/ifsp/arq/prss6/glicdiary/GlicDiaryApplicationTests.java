@@ -1,10 +1,10 @@
-package br.edu.ifsp.arq.dw2s6.iftiness;
+package br.edu.ifsp.arq.prss6.glicdiary;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IFitnessApplicationTests {
+class GlicDiaryApplicationTests {
 
 	@Test
 	void contextLoads() {

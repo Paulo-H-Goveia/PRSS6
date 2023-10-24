@@ -1,0 +1,39 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Nova Medicao</h1>
+      </div>
+
+      <div class="p-col-12 p-md-6 p-fluid">
+        <label>Tipo</label>
+        <p-dropdown name="type" [options]="types" placeholder="Selecione"
+        [(ngModel)]="measure.type" #type="ngModel" required></p-dropdown>
+      </div>
+
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Data</label>
+        <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false"
+        [(ngModel)]="measure.date" #date="ngModel" required></p-calendar>
+        <app-message [control]="date" error="required" text="Informe uma data"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Distância (Km)</label>
+        <input pInputText name="distance" type="number" step="0.1"
+        [(ngModel)]="measure.distance" #distance="ngModel" required>
+        <app-message [control]="distance" error="required" text="Informe uma distância"></app-message>
+      </div>
+
+      <div class="p-col-12">
+      	<p>
+	  <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+	  <button pButton type="button" label="Nova" class="p-button-info"></button>
+	  <a href="javascript:;">Voltar para a pesquisa</a>
+        </p>
+      </div>
+    </div>
+
+  </form>
+</div>

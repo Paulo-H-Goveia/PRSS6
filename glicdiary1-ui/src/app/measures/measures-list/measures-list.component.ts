@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MeasuresService } from '../measure.service';
 
@@ -10,7 +11,7 @@ export class MeasuresListComponent {
 
   measures = [];
 
-  constructor(private measureService: MeasuresService){}
+  constructor(private measureService: MeasuresService, private router: Router){}
 
   ngOnInit(): void{
     this.list();
@@ -18,6 +19,10 @@ export class MeasuresListComponent {
 
   list(): void{
     this.measureService.listByUser().then(result => {this.measures = result});
+  }
+
+  goToPage(){
+    this.router.navigate(['/measures/new']);
   }
 
   /*measures = [

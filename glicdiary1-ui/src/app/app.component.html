@@ -1,35 +1,5 @@
-<div class="container">
+<!--app-measures-list></app-measures-list!-->
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<app-login-form></app-login-form>
 
-  <div class="p-col-12">
-    <h1>Mediçoes Glicemicas</h1>
-  </div>
-
-  <div class="p-grid">
-    <div class="p-col-12">
-      <p-table [value]="measures">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Medição</th>
-            <th>Tipo Medição</th>
-            <th>Hora</th>
-            <th class="col-actions-header"></th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-measure>
-          <tr>
-            <td>{{ measure.measure }}</td>
-            <td>{{ measure.type }}</td>
-            <td>{{ measure.measure_date }}</td>
-            <td class="col-actions">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-    <div class="p-col-13">
-      <p><button pButton icon="pi pi-plus-circle" pTooltip="Add" tooltipPosition="top"></button></p>
-    </div>
-  </div>
-</div>

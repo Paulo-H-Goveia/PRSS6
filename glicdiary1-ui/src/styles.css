@@ -44,3 +44,7 @@ body {
   width: 35px !important;
   font-size: 35px !important;
 }
+
+form .p-button {
+  margin-right: .25em;
+}

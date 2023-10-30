@@ -1,3 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
+import { SecurityModule } from './security/security.module';
+import { MeasuresModule } from './measures/measures.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -6,6 +9,8 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { AuthService } from './security/auth.service';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +21,15 @@ import { TooltipModule } from 'primeng/tooltip';
     ButtonModule,
     TableModule,
     AppRoutingModule,
-    TooltipModule
+    TooltipModule,
+    MeasuresModule,
+    SecurityModule,
+    HttpClientModule,
+    CoreModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

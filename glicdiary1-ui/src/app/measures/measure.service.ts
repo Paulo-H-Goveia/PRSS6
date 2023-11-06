@@ -41,4 +41,10 @@ export class MeasuresService {
     return this.http.post<any>(this.measuresUrl, Measure.toJson(measure), { headers })
       .toPromise();
   }
+
+  remove(id: number): Promise<any> {
+    return this.http.delete(`${this.measuresUrl}/${id}`)
+      .toPromise()
+      .then(() => null);
+  }
 }

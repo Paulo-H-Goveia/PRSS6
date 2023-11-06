@@ -35,14 +35,14 @@
             </td>
             <td class="col-actions">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmRemoval(activity)"></button>
             </td>
           </tr>
         </ng-template>
       </p-table>
     </div>
     <div class="p-col-13">
-      <p><button (click)="goToPage()" pButton icon="pi pi-plus-circle" pTooltip="Add" tooltipPosition="top"></button></p>
+      <p><button pButton icon="pi pi-plus-circle" pTooltip="Add" tooltipPosition="top"></button></p>
 
     </div>
   </div>

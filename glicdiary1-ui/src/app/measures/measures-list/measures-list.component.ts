@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component } from '@angular/core';
 import { MeasuresService } from '../measure.service';
+
 
 @Component({
   selector: 'app-measures-list',
@@ -11,7 +12,8 @@ export class MeasuresListComponent {
 
   measures = [];
 
-  constructor(private measureService: MeasuresService, private router: Router){}
+  constructor(private measureService: MeasuresService, private confirmation: ConfirmationService,
+    private messageService: MessageService){}
 
   ngOnInit(): void{
     this.list();
@@ -21,13 +23,32 @@ export class MeasuresListComponent {
     this.measureService.listByUser().then(result => {this.measures = result});
   }
 
-  goToPage(){
+  confirmRemoval(measure: any): void {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.remove(measure);
+      }
+    });
+  }
+
+  remove(measure: any): void {
+      this.measureService.remove(measure.id)
+        .then(() => {
+          this.list();
+          this.messageService.add({ severity: 'success', detail: 'Medição excluída com sucesso!' });
+        });
+    }
+
+  }
+
+  /*goToPage(){
     this.router.navigate(['/measures/new']);
   }
 
-  /*measures = [
+  measures = [
     { type: 'JEJUM', measure_date: '06:00', measure: 188.0},
     { type: 'ALMOCO', measure_date: '13:00', measure: 88.0},
     { type: 'JANTA', measure_date: '20:00', measure: 105.0}
   ];*/
-}
+

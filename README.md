@@ -1,6 +1,6 @@
 # PRSS6
 Projeto da disciplina PRSS6 
-Web application para controle de niveis glicemicos no sangue.
+Web application para controle de niveis glicemicos no sangue.Roteiro 12-linha-134
 
 npm install
 npm install -g @angular/cli

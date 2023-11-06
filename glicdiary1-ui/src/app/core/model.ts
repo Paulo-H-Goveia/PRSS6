@@ -1,11 +1,8 @@
 import * as moment from 'moment';
+import { AuthService } from '../security/auth.service';
 
 export class User {
   id!: number;
-
-  constructor(){
-    this.id = 1;
-  }
 }
 
 export class Measure {
@@ -13,7 +10,12 @@ export class Measure {
   medicao!: number;
   type!: 'ALMOCO';
   date!: Date;
-  user = new User();
+  user: any;
+
+  constructor(user_id: number){
+    this.user = new User();
+    this.user.id = user_id;
+  }
 
   static toJson(measuresModule: Measure): any {
     return {

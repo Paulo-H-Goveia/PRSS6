@@ -1,3 +1,4 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component } from '@angular/core';
 import { MeasuresService } from '../measure.service';
@@ -12,15 +13,16 @@ export class MeasuresListComponent {
 
   measures = [];
 
+
   constructor(private measureService: MeasuresService, private confirmation: ConfirmationService,
-    private messageService: MessageService){}
+    private messageService: MessageService, private errorHandler: ErrorHandlerService){}
 
   ngOnInit(): void{
     this.list();
   }
 
   list(): void{
-    this.measureService.listByUser().then(result => {this.measures = result});
+    this.measureService.listByUser().then(result => {this.measures = result}).catch(error => this.errorHandler.handle(error));
   }
 
   confirmRemoval(measure: any): void {
@@ -37,7 +39,7 @@ export class MeasuresListComponent {
         .then(() => {
           this.list();
           this.messageService.add({ severity: 'success', detail: 'Medição excluída com sucesso!' });
-        });
+        }).catch(error => this.errorHandler.handle(error));
     }
 
   }

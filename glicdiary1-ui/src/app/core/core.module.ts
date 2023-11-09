@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -17,7 +18,8 @@ import { ErrorHandlerService } from './error-handler.service';
   imports: [
     CommonModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    RouterModule
   ],
   providers: [
     AuthService,

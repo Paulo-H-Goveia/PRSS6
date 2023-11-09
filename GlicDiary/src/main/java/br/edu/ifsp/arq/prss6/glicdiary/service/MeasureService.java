@@ -16,25 +16,36 @@ import br.edu.ifsp.arq.prss6.glicdiary.service.exception.NonExistentOrInactiveUs
 public class MeasureService {
 	
 	@Autowired
-	private MeasureRepository activityRepository;
+	private MeasureRepository measureRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
 	
-	public Measure save(Measure activity) {
+	public Measure save(Measure measure) {
 		Optional<User> user = userRepository.findById(
-				activity.getUser().getId());
+				measure.getUser().getId());
 		if(!user.isPresent() || !user.get().isActive()) {
 			throw new NonExistentOrInactiveUserException();
 		}
-		return activityRepository.save(activity);
+		return measureRepository.save(measure);
 	}
 	
 	public List<Measure> listByUser(String email){
 		Optional<User> user = userRepository.findByEmail(email);
 		if(user.isPresent()) {
-			return activityRepository.findByUser(user.get());
+			return measureRepository.findByUser(user.get());
 		}
 		return null;
+	}
+
+	public Measure update(Long id, Measure measure) {
+		Measure measureSaved = findMeasureById(id);
+		BeanUtils.copyProperties(measure, measureSaved, "id");
+		return measureRepository.save(measureSaved);
+	}
+	
+	public Measure findMeasureById(Long id) {
+		Measure measureSaved = measureRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
+		return measureSaved;
 	}
 }

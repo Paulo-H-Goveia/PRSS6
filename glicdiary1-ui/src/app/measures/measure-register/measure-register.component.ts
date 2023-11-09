@@ -1,3 +1,5 @@
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { MessageService } from 'primeng/api';
 import { MeasuresService } from './../measure.service';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -22,16 +24,17 @@ export class MeasureRegisterComponent {
  /*save(form: NgForm): void{
     console.log(this.measure);
   }*/
-  constructor(private measureService: MeasuresService, private auth: AuthService){}
+  constructor(private measureService: MeasuresService, private auth: AuthService, private errorHandler: ErrorHandlerService,
+    private messageService: MessageService){}
 
   save(measureForm: NgForm) {
     this.measureService.add(this.measure)
-      .then(() => {
-        console.log('Medição adicionada com sucesso!');
-        measureForm.reset();
-        this.measure = new Measure(this.auth.jwtPayload.user_id);
-      })
-      .catch(erro => console.log(erro));
+    .then(() => {
+      this.messageService.add({ severity: 'success', detail: 'Medição adicionada com sucesso!' });
+      measureForm.reset();
+      this.measure = new Measure(this.auth.jwtPayload?.user_id);
+    })
+    .catch(error => this.errorHandler.handle(error));
   }
 
 }

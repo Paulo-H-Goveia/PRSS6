@@ -72,4 +72,11 @@ public class MeasureResource {
 	public void remover(@PathVariable Long id) {
 		measureRepository.deleteById(id);
 	}
+
+	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_MEASURE') and #oauth2.hasScope('write')")
+	public ResponseEntity<Measure> update(@PathVariable Long id, @Valid @RequestBody Measure measure) {
+		Measure measureSaved = measureService.update(id, measure);
+		return ResponseEntity.ok(measureSaved);
+	}
 }

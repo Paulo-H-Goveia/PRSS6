@@ -7,7 +7,8 @@ import { MeasureRegisterComponent } from './measures/measure-register/measure-re
 const routes: Routes = [
   {path: 'measures', component: MeasuresListComponent},
   {path: 'login', component: LoginFormComponent},
-  {path: 'measures/new', component: MeasureRegisterComponent}
+  {path: 'measures/new', component: MeasureRegisterComponent},
+  { path: 'measures/:id', component: MeasureRegisterComponent }
 ];
 
 @NgModule({

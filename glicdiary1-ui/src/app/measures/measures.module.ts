@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { TooltipModule } from 'primeng/tooltip';
@@ -30,7 +31,8 @@ import { SharedModule } from '../shared/shared.module';
     TooltipModule,
     CalendarModule,
     DropdownModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports:[
     MeasuresListComponent,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../security/auth.service';
 import { Measure } from '../core/model';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,36 @@ export class MeasuresService {
     return this.http.delete(`${this.measuresUrl}/${id}`)
       .toPromise()
       .then(() => null);
+  }
+
+  update(measure: Measure): Promise<Measure> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<Measure>(`${this.measuresUrl}/${measure.id}`, Measure.toJson(measure), { headers })
+      .toPromise()
+      .then((response: any) => {
+        const updated = response;
+
+        this.stringToDate(updated);
+
+        return updated;
+      });
+  }
+
+  findById(id: number): Promise<Measure> {
+    return this.http.get<Measure>(`${this.measuresUrl}/${id}`)
+      .toPromise()
+      .then((response: any) => {
+        const measure = response;
+
+        this.stringToDate(measure);
+
+        return measure;
+      });
+  }
+
+  private stringToDate(measure: Measure): void {
+    measure.date = moment(measure.date, 'DD/MM/YYYY').toDate();
   }
 }

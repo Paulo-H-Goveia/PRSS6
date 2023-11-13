@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { MeasuresListComponent } from './measures/measures-list/measures-list.component';
 import { LoginFormComponent } from './security/login-form/login-form.component';
 import { MeasureRegisterComponent } from './measures/measure-register/measure-register.component';
+import { UserRegisterComponent } from './users/user-register/user-register.component';
 
 const routes: Routes = [
   {path: 'measures', component: MeasuresListComponent},
   {path: 'login', component: LoginFormComponent},
   {path: 'measures/new', component: MeasureRegisterComponent},
+  { path: 'users/new', component: UserRegisterComponent },
   { path: 'measures/:id', component: MeasureRegisterComponent }
 ];
 

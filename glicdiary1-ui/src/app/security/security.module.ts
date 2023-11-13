@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RouterModule } from '@angular/router';
 
 export function tokenGetter(): any {
   return localStorage.getItem('token');
@@ -19,11 +20,12 @@ export function tokenGetter(): any {
     FormsModule,
     InputTextModule,
     ButtonModule,
+    RouterModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
         allowedDomains: ['localhost:8080'],
-        disallowedRoutes: ['http://localhost:8080/oauth/token']
+        disallowedRoutes: ['http://localhost:8080/oauth/token', 'http://localhost:8080/users']
       }
     })
   ],

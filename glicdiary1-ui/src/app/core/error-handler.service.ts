@@ -22,6 +22,10 @@ export class ErrorHandlerService {
         msg = 'Você não tem permissão para executar esta ação';
       }
 
+      if (errorResponse.status === 404) {
+        msg = 'Nenhuma atividade cadastrada.';
+      }
+
       try {
         msg = errorResponse.error[0].userMessage;
       } catch (e) { }

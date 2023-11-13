@@ -3,6 +3,11 @@ import { AuthService } from '../security/auth.service';
 
 export class User {
   id!: number;
+  name!: string;
+  email!: string;
+  cpf!: number;
+  password!: string;
+  active = true;
 }
 
 export class Measure {

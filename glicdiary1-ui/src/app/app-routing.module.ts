@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'login', component: LoginFormComponent},
   {path: 'measures/new', component: MeasureRegisterComponent},
   { path: 'users/new', component: UserRegisterComponent },
-  { path: 'measures/:id', component: MeasureRegisterComponent }
+  { path: 'measures/:id', component: MeasureRegisterComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

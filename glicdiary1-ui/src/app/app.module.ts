@@ -11,6 +11,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { AuthService } from './security/auth.service';
 import { CoreModule } from './core/core.module';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CoreModule } from './core/core.module';
     MeasuresModule,
     SecurityModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    UsersModule
   ],
   providers: [
     AuthService

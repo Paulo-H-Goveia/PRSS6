@@ -1,3 +1,5 @@
+import { AuthGuard } from './auth.guard';
+import { GlicdiaryHttpInterceptor } from './glicdiary-http-interceptor';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -6,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 export function tokenGetter(): any {
   return localStorage.getItem('token');
@@ -33,7 +36,13 @@ export function tokenGetter(): any {
     LoginFormComponent
   ],
   providers: [
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlicdiaryHttpInterceptor,
+      multi: true
+    },
+    AuthGuard
   ]
 })
 export class SecurityModule { }

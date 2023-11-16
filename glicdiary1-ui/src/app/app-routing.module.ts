@@ -1,3 +1,5 @@
+import { NotAuthorizedComponent } from './core/not-authorized.component';
+import { PageNotFoundComponent } from './core/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MeasuresListComponent } from './measures/measures-list/measures-list.component';
@@ -12,6 +14,9 @@ const routes: Routes = [
   { path: 'users/new', component: UserRegisterComponent },
   { path: 'measures/:id', component: MeasureRegisterComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: '**', redirectTo: 'page-not-found'}
 ];
 
 @NgModule({

@@ -10,10 +10,15 @@ import { ToastModule} from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from './error-handler.service';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { Title } from '@angular/platform-browser';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +32,7 @@ import { ErrorHandlerService } from './error-handler.service';
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   exports: [

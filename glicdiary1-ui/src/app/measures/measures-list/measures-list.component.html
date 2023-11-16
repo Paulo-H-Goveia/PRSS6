@@ -35,7 +35,7 @@
             </td>
             <td class="col-actions">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/measures', measure.id]"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmRemoval(measure)"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmRemoval(measure)" [disabled]="!auth.hasPermission('ROLE_REMOVE_MEASURE')"></button>
             </td>
           </tr>
         </ng-template>

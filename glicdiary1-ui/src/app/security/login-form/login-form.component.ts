@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -12,7 +13,13 @@ export class LoginFormComponent {
   msg: any;
 
   constructor(
-    private auth: AuthService, private router: Router) {
+    private auth: AuthService,
+    private router: Router,
+    private title: Title) {
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle('Login de Usuário');
   }
 
   login(user: string, password: string) {

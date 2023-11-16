@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,8 +22,13 @@ export class UserRegisterComponent {
     private userService: UserService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ){}
+
+  ngOnInit(): void {
+    this.title.setTitle('Cadastro de Usuário');
+  }
 
   save(userForm: NgForm) {
     this.userService.add(this.user)

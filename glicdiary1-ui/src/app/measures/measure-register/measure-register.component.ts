@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { MessageService } from 'primeng/api';
 import { MeasuresService } from './../measure.service';
@@ -25,8 +26,12 @@ export class MeasureRegisterComponent {
  /*save(form: NgForm): void{
     console.log(this.measure);
   }*/
-  constructor(private measureService: MeasuresService, private auth: AuthService, private errorHandler: ErrorHandlerService,
-    private messageService: MessageService, private route: ActivatedRoute, private router: Router){}
+  constructor(private measureService: MeasuresService,
+    private auth: AuthService,
+    private errorHandler: ErrorHandlerService,
+    private messageService: MessageService,
+    private route: ActivatedRoute, private router: Router,
+    private title: Title){}
 
 
     ngOnInit(): void {
@@ -34,6 +39,7 @@ export class MeasureRegisterComponent {
       if(id != 'new'){
         this.loadMeasure(id);
       }
+      this.title.setTitle('Cadastro de Medição');
     }
 
     get editing(): boolean {

@@ -13,7 +13,7 @@
     <li class="navbar-user">{{ auth.jwtPayload?.name }}</li>
     <li class="navbar-menuitem" routerLinkActive="active"
     *ngIf="auth.hasPermission('ROLE_SEARCH_MEASURE')"><a routerLink="/measures">Medições</a></li>
-    <li class="navbar-menuitem"><a >Logout</a></li>
+    <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 
 </nav>

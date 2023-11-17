@@ -11,16 +11,12 @@
           <tr>
             <th>Medição</th>
             <th>Tipo Medição</th>
-            <th>Hora</th>
+            <th>Data</th>
             <th class="col-actions-header"></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-measure>
           <tr>
-            <td>
-              <span class="p-column-title">Usuário</span>
-              {{ measure.user.name }}
-            </td>
             <td>
               <span class="p-column-title">Medição</span>
               {{ measure.measure }}
@@ -30,7 +26,7 @@
               {{ measure.type }}
             </td>
             <td>
-              <span class="p-column-title">Hora</span>
+              <span class="p-column-title">Data</span>
               {{ measure.measure_date }}
             </td>
             <td class="col-actions">

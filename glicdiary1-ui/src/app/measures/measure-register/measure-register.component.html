@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
     <div class="p-grid">
       <div class="p-col-12">
@@ -24,7 +24,7 @@
       </div>
       <div class="p-col-12">
       	<p>
-	  <button pButton type="submit" label="Salvar" style="background-color: rgb(4, 196, 132); margin: 2px"></button>
+	  <button pButton type="submit" label="Salvar" style="background-color: rgb(4, 196, 132); margin: 2px" [disabled]="f.invalid" ></button>
 	  <!--button pButton type="button" label="Nova" class="p-button-info" style="background-color: rgb(4, 196, 132); margin: 2px"></button-->
 	  <!--a routerLink="/measures" style="padding: 20px;">Voltar para a pesquisa</a-->
     <button pButton icon="pi pi-arrow-left" pTooltip="back" tooltipPosition="top" routerLink="/measures" style="background-color: rgb(4, 196, 132); margin: 2px"></button>

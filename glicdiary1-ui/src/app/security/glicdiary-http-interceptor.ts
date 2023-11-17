@@ -6,6 +6,8 @@ import { mergeMap } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
 
+export class NotAuthenticatedError {}
+
 @Injectable()
 export class GlicdiaryHttpInterceptor implements HttpInterceptor {
 
@@ -23,8 +25,12 @@ export class GlicdiaryHttpInterceptor implements HttpInterceptor {
           // método "getNewAccessToken" e o segundo é o retorno, que vem
           // de "handle.next(req)"
           mergeMap(() => {
-            req = req.clone({
+
+              if (!req.url.includes('/oauth/token') && !req.url.includes('/users') && this.auth.isInvalidAccessToken()) {
+                throw new NotAuthenticatedError();
+              }
               // adiciona o Header Authorization, obtendo-o do localStorage
+              req = req.clone({
               setHeaders: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
               }

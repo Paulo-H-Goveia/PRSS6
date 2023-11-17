@@ -16,11 +16,26 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (route.data['roles'] && !this.auth.hasAnyPermission(route.data['roles'])) {
+
+    if (this.auth.isInvalidAccessToken()) {
+      console.log('Navegação com access token inválido. Obtendo novo token...');
+
+      return this.auth.getNewAccessToken()
+        .then(() => {
+          if (this.auth.isInvalidAccessToken()) {
+            this.router.navigate(['/login']);
+            return false;
+          }
+
+          return true;
+        });
+    }else if (route.data['roles'] && !this.auth.hasAnyPermission(route.data['roles'])) {
       this.router.navigate(['/not-authorized']);
       return false;
     }
     return true;
   }
+
+
 
 }

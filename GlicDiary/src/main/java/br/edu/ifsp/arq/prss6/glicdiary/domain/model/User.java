@@ -34,7 +34,7 @@ public class User {
 	private String password;
 	@NotNull
 	@Size(min = 11, max = 11)
-	private int cpf;
+	private String cpf;
 	@NotNull
 	private Boolean active;
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -73,11 +73,11 @@ public class User {
 		this.password = password;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setAge(int cpf) {
+	public void setAge(String cpf) {
 		this.cpf = cpf;
 	}
 

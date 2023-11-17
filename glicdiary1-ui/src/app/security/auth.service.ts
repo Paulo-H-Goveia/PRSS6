@@ -10,6 +10,7 @@ export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
   jwtPayload: any;
+  tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
 
   constructor(
     private http: HttpClient,
@@ -95,5 +96,18 @@ export class AuthService {
       }
     }
     return false;
+  }
+
+  cleanAccessToken(): void {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
+  }
+
+  logout(): Promise<any> {
+    return this.http.delete(this.tokensRevokeUrl, { withCredentials: true })
+      .toPromise()
+      .then(() => {
+        this.cleanAccessToken();
+      });
   }
 }

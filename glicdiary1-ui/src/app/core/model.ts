@@ -12,7 +12,7 @@ export class User {
 
 export class Measure {
   id!: number;
-  medicao!: number;
+  measure!: number;
   type!: 'ALMOCO';
   date!: Date;
   user: any;
@@ -25,7 +25,7 @@ export class Measure {
   static toJson(measuresModule: Measure): any {
     return {
       id: measuresModule.id,
-      medicao: measuresModule.medicao,
+      measure: measuresModule.measure,
       type: measuresModule.type,
       date: moment(measuresModule.date).format('DD/MM/YYYY'),
       user: measuresModule.user

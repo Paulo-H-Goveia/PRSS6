@@ -3,24 +3,24 @@
 
     <div class="p-grid">
       <div class="p-col-12">
-        <h1>{{ editing ? 'Edição de' : 'Nova' }} Medição</h1>
+        <h1>Medição</h1>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Tipo</label>
-        <p-dropdown [options]="types" placeholder="Selecione" [(ngModel)]="measure.type"></p-dropdown>
+        <p-dropdown name="type" [options]="types" placeholder="Selecione" [(ngModel)]="measure.type"></p-dropdown>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Data</label>
-        <p-calendar dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="measure.date" #date="ngModel" required></p-calendar>
+        <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="measure.date" #date="ngModel" required></p-calendar>
         <app-message [control]="date" error="required" text="Informe uma data"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Medição</label>
-        <input pInputText type="number" step="1" [(ngModel)]="measure.medicao" #medicao="ngModel" required>
-        <app-message [control]="medicao" error="required" text="Informe uma Medição"></app-message>
+        <input pInputText type="number" name="measure" step="1" [(ngModel)]="measure.measure" #measure="ngModel" required>
+        <app-message [control]="measure" error="required" text="Informe uma Medição"></app-message>
       </div>
       <div class="p-col-12">
       	<p>

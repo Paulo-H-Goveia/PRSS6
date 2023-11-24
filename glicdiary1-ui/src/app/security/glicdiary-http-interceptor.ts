@@ -14,7 +14,7 @@ export class GlicdiaryHttpInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (!req.url.includes('/oauth/token') && this.auth.isInvalidAccessToken()) {
+    if (!req.url.includes('/oauth/token') && !req.url.includes('/users') && this.auth.isInvalidAccessToken()) {
       // from - transformar a Promise (retornada pelo método "obterNovoAccessToken")
       // em um Observable, que é o tipo de retorno esperado pelo intercept
       return from(this.auth.getNewAccessToken())
@@ -26,7 +26,7 @@ export class GlicdiaryHttpInterceptor implements HttpInterceptor {
           // de "handle.next(req)"
           mergeMap(() => {
 
-              if (!req.url.includes('/oauth/token') && !req.url.includes('/users') && this.auth.isInvalidAccessToken()) {
+              if (this.auth.isInvalidAccessToken()) {
                 throw new NotAuthenticatedError();
               }
               // adiciona o Header Authorization, obtendo-o do localStorage

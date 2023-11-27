@@ -22,24 +22,27 @@ export class MeasureRegisterComponent {
     { label: 'Janta', value: 'JANTA' }
   ];
 
- measure = new Measure(this.auth.jwtPayload.user_id);
+ measure = new Measure(this.auth.jwtPayload?.user_id);
  /*save(form: NgForm): void{
     console.log(this.measure);
   }*/
-  constructor(private measureService: MeasuresService,
+  constructor(
+    private measureService: MeasuresService,
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private route: ActivatedRoute, private router: Router,
-    private title: Title){}
+    private route: ActivatedRoute,
+    private router: Router,
+    private title: Title
+    ){}
 
 
     ngOnInit(): void {
-      const id = this.route.snapshot.params[`id`];
+     /* const id = this.route.snapshot.params['id'];
       if(id != 'new'){
         this.loadMeasure(id);
       }
-      this.title.setTitle('Cadastro de Medição');
+      this.title.setTitle('Cadastro de Medição');*/
     }
 
     get editing(): boolean {
@@ -73,12 +76,12 @@ export class MeasureRegisterComponent {
 
     addMeasure(measureForm: NgForm) {
       this.measureService.add(this.measure)
-        .then(addedMeasure => {
-          this.messageService.add({ severity: 'success', detail: 'Medição adicionada com sucesso!' });
-    this.loadMeasure(addedMeasure.id);
-          this.router.navigate(['/measures', addedMeasure.id]);
-        })
-        .catch(error => this.errorHandler.handle(error));
+      .then((addedMeasure) => {
+        this.messageService.add({ severity: 'success', detail: 'Medição adicionada com sucesso!' });
+        this.loadMeasure(addedMeasure.id);
+        this.router.navigate(['/measures', addedMeasure.id]);
+      })
+      .catch(error => this.errorHandler.handle(error));
     }
 
     new(measureForm: NgForm){

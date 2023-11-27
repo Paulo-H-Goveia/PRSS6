@@ -1,6 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 
 import { MeasuresService } from '../measures/measure.service';
@@ -32,8 +32,9 @@ import { NotAuthorizedComponent } from './not-authorized.component';
     MessageService,
     ConfirmationService,
     ErrorHandlerService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
     Title,
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
+    DatePipe
   ],
   exports: [
     NavbarComponent,

@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import { AuthService } from '../security/auth.service';
 
 export class User {
   id!: number;
@@ -22,13 +21,13 @@ export class Measure {
     this.user.id = user_id;
   }
 
-  static toJson(measuresModule: Measure): any {
+  static toJson(measure: Measure): any {
     return {
-      id: measuresModule.id,
-      measure: measuresModule.measure,
-      type: measuresModule.type,
-      date: moment(measuresModule.date).format('DD/MM/YYYY'),
-      user: measuresModule.user
+      id: measure.id,
+      measure: measure.measure,
+      type: measure.type,
+      date: moment(measure.date).format('DD/MM/YYYY'),
+      user: measure.user
     }
   }
 }

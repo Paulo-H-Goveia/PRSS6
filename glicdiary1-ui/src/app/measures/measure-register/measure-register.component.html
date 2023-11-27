@@ -3,12 +3,12 @@
 
     <div class="p-grid">
       <div class="p-col-12">
-        <h1>Medição</h1>
+        <h1>{{ editing ? 'Edição de' : 'Nova' }}Medição</h1>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Tipo</label>
-        <p-dropdown name="type" [options]="types" placeholder="Selecione" [(ngModel)]="measure.type"></p-dropdown>
+        <p-dropdown name="type" [options]="types" placeholder="Selecione" [(ngModel)]="measure.type" #type="ngModel" required></p-dropdown>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">

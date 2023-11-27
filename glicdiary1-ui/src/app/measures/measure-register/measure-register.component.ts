@@ -2,7 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { MessageService } from 'primeng/api';
 import { MeasuresService } from './../measure.service';
-import { Component, LOCALE_ID } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Measure } from './../../core/model'
 import { AuthService } from './../../security/auth.service';
@@ -23,10 +23,8 @@ export class MeasureRegisterComponent {
   ];
 
  measure = new Measure(this.auth.jwtPayload?.user_id);
- /*save(form: NgForm): void{
-    console.log(this.measure);
-  }*/
-  constructor(
+
+ constructor(
     private measureService: MeasuresService,
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
@@ -38,11 +36,11 @@ export class MeasureRegisterComponent {
 
 
     ngOnInit(): void {
-     /* const id = this.route.snapshot.params['id'];
+     const id = this.route.snapshot.params[`id`];
       if(id != 'new'){
         this.loadMeasure(id);
       }
-      this.title.setTitle('Cadastro de Medição');*/
+      this.title.setTitle('Cadastro de Medição');
     }
 
     get editing(): boolean {
@@ -84,10 +82,10 @@ export class MeasureRegisterComponent {
       .catch(error => this.errorHandler.handle(error));
     }
 
-    new(measureForm: NgForm){
+    /*new(measureForm: NgForm){
       this.measure = new Measure(this.auth.jwtPayload?.user_id);
       measureForm.reset();
       this.router.navigate(['/measures/new']);
-    }
+    }*/
 
 }

@@ -8,29 +8,32 @@
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Tipo</label>
-        <p-dropdown name="type" [options]="types" placeholder="Selecione" [(ngModel)]="measure.type" #type="ngModel" required></p-dropdown>
+        <p-dropdown name="type" [options]="types" placeholder="Selecione"
+        [(ngModel)]="measure.type" #type="ngModel" required></p-dropdown>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Data</label>
-        <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="measure.date" #date="ngModel" required></p-calendar>
+        <p-calendar name="date" dateFormat="dd/mm/yy" [inline]="false"
+        [(ngModel)]="measure.date" #date="ngModel" required></p-calendar>
         <app-message [control]="date" error="required" text="Informe uma data"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Medição</label>
-        <input pInputText type="number" name="measure" step="1" [(ngModel)]="measure.measure" #measure="ngModel" required>
+        <input pInputText type="number" name="measure" step="1"
+        [(ngModel)]="measure.measure" #measure="ngModel" required>
         <app-message [control]="measure" error="required" text="Informe uma Medição"></app-message>
       </div>
+
       <div class="p-col-12">
       	<p>
-	  <button pButton type="submit" label="Salvar" style="background-color: rgb(4, 196, 132); margin: 2px" [disabled]="f.invalid" ></button>
-	  <!--button pButton type="button" label="Nova" class="p-button-info" style="background-color: rgb(4, 196, 132); margin: 2px"></button-->
-	  <!--a routerLink="/measures" style="padding: 20px;">Voltar para a pesquisa</a-->
-    <button pButton icon="pi pi-arrow-left" pTooltip="back" tooltipPosition="top" routerLink="/measures" style="background-color: rgb(4, 196, 132); margin: 2px"></button>
+          <button pButton type="submit" label="Salvar"
+          style="background-color: rgb(4, 196, 132); margin: 2px" [disabled]="f.invalid" ></button>
+          <button pButton icon="pi pi-arrow-left" pTooltip="back" tooltipPosition="top"
+          routerLink="/measures" style="background-color: rgb(4, 196, 132); margin: 2px"></button>
         </p>
       </div>
     </div>
-
   </form>
 </div>

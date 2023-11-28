@@ -1,7 +1,8 @@
-import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -14,6 +15,7 @@ export class LoginFormComponent {
 
   constructor(
     private auth: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
     private title: Title) {
   }

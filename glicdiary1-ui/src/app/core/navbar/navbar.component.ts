@@ -12,9 +12,11 @@ export class NavbarComponent {
 
   displayingMenu = false;
 
-  constructor(public auth: AuthService,
+  constructor(
+    public auth: AuthService,
     private errorHandler: ErrorHandlerService,
-    private router: Router) { }
+    private router: Router
+    ) { }
 
     logout(): void {
       this.auth.logout()

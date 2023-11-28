@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '../security/auth.service';
-import { Measure } from '../core/model';
+
 import * as moment from 'moment';
+
+import { Measure, User } from '../core/model';
+import { AuthService } from '../security/auth.service';
+import { DatePipe } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'

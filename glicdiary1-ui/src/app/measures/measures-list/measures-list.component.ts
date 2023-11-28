@@ -1,9 +1,11 @@
-import { AuthService } from './../../security/auth.service';
-import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { Component } from '@angular/core';
-import { MeasuresService } from '../measure.service';
 import { Title } from '@angular/platform-browser';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AuthService } from './../../security/auth.service';
+import { MeasuresService } from '../measure.service';
 
 
 @Component({
@@ -17,12 +19,14 @@ export class MeasuresListComponent {
   header = 'GlicDiary';
 
 
-  constructor(private measureService: MeasuresService,
+  constructor(
+    private measureService: MeasuresService,
     private confirmation: ConfirmationService,
     private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
     private title: Title,
-    public auth: AuthService){}
+    public auth: AuthService
+    ){}
 
   ngOnInit(): void{
     this.title.setTitle('Listagem de Medições');

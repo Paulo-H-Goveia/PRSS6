@@ -1,6 +1,6 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -9,8 +9,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
-  jwtPayload: any;
   tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
+  jwtPayload: any;
+
 
   constructor(
     private http: HttpClient,
@@ -43,6 +44,23 @@ export class AuthService {
       });
   }
 
+  private storeToken(token: string): void {
+    this.jwtPayload = this.jwtHelper.decodeToken(token);
+    localStorage.setItem('token', token);
+  }
+
+  private loadToken(): void {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      this.storeToken(token);
+    }
+  }
+
+  hasPermission(permission: string): boolean {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
+  }
+
   getNewAccessToken(): Promise<void> {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/x-www-form-urlencoded')
@@ -70,23 +88,6 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     return !token || this.jwtHelper.isTokenExpired(token);
-  }
-
-  private storeToken(token: string): void {
-    this.jwtPayload = this.jwtHelper.decodeToken(token);
-    localStorage.setItem('token', token);
-  }
-
-  private loadToken(): void {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      this.storeToken(token);
-    }
-  }
-
-  hasPermission(permission: string): boolean {
-    return this.jwtPayload && this.jwtPayload.authorities.includes(permission);
   }
 
   hasAnyPermission(roles: any): boolean {

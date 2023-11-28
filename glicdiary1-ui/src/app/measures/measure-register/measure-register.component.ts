@@ -1,12 +1,14 @@
-import { Title } from '@angular/platform-browser';
-import { ErrorHandlerService } from './../../core/error-handler.service';
-import { MessageService } from 'primeng/api';
-import { MeasuresService } from './../measure.service';
 import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Measure } from './../../core/model'
-import { AuthService } from './../../security/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
+import { MessageService } from 'primeng/api';
+
+import { AuthService } from './../../security/auth.service';
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { MeasuresService } from './../measure.service';
+import { Measure } from './../../core/model'
 
 @Component({
   selector: 'app-measure-register',

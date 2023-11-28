@@ -29,8 +29,8 @@ export class GlicdiaryHttpInterceptor implements HttpInterceptor {
               if (this.auth.isInvalidAccessToken()) {
                 throw new NotAuthenticatedError();
               }
-              // adiciona o Header Authorization, obtendo-o do localStorage
               req = req.clone({
+              // adiciona o Header Authorization, obtendo-o do localStorage
               setHeaders: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
               }

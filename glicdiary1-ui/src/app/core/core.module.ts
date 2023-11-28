@@ -1,18 +1,21 @@
-import { RouterModule } from '@angular/router';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import localePt from '@angular/common/locales/pt';
 
-import { MeasuresService } from '../measures/measure.service';
-import { AuthService } from '../security/auth.service';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ToastModule} from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
+
 import { ErrorHandlerService } from './error-handler.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MeasuresService } from '../measures/measure.service';
+import { AuthService } from '../security/auth.service';
 import { PageNotFoundComponent } from './page-not-found.component';
-import { Title } from '@angular/platform-browser';
 import { NotAuthorizedComponent } from './not-authorized.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [

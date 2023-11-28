@@ -1,16 +1,19 @@
-import { NotAuthenticatedError } from './../security/glicdiary-http-interceptor';
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { NotAuthenticatedError } from './../security/glicdiary-http-interceptor';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
 
-  constructor(private messageService: MessageService,
-    private router: Router) { }
+  constructor(
+    private messageService: MessageService,
+    private router: Router
+    ) { }
 
   handle(errorResponse: any): void {
     let msg: string;

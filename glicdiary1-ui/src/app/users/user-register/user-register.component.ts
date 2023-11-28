@@ -1,4 +1,3 @@
-import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { User } from 'src/app/core/model';
 import { UserService } from '../user.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-register',

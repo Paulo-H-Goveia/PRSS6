@@ -11,7 +11,7 @@ export class User {
 
 export class Measure {
   id!: number;
-  measure!: number;
+  measures!: number;
   type!: 'ALMOCO';
   date!: Date;
   user: any;
@@ -24,7 +24,7 @@ export class Measure {
   static toJson(measure: Measure): any {
     return {
       id: measure.id,
-      measure: measure.measure,
+      measure: measure.measures,
       type: measure.type,
       date: moment(measure.date).format('DD/MM/YYYY'),
       user: measure.user

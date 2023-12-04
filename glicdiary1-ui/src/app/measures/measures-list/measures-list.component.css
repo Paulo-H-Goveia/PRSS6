@@ -2,3 +2,86 @@
 https://github.com/NikosDev/AlarmClock/blob/master/src/app/app.component.ts
 https://github.com/topics/alarm-clock?l=typescript
 */
+
+#chart{
+  display: flex;
+}
+
+#div-chart{
+  height: 90%;
+  width: 90%;
+}
+
+#bg{
+  background-color: white;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#box{
+  height: 200px;
+  width: 300px;
+  padding: 10px;
+  background:white;
+}
+
+#current-time{
+  color: black;
+  font-size: 18px;
+  font-style: oblique;
+  border-bottom: solid #f5deb333;
+  border-bottom-width: medium;
+
+border-width: 0.1px;
+  /* font-family: 'Orbitron', sans-serif; */
+}
+
+#clock{
+  color: rgb(4, 196, 132);
+  font-size: 32px;
+  font-style: oblique;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn.btn-dark{
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: 8px;
+  margin-left: 2px;
+  width: 20px;
+
+}
+
+.control-buttons{
+  margin-left: 4px;
+}
+
+#alarm-on{
+  float:right;
+  color: #04a804;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#alarm-off{
+  float:right;
+  color: red;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#set-alarm-button{
+  margin-top: 24px;
+  background-color: rgb(4, 196, 132);
+  color: #fff9f9
+}

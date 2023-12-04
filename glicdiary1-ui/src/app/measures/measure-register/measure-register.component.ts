@@ -70,6 +70,7 @@ export class MeasureRegisterComponent {
         .then( measure => {
           this.messageService.add({ severity: 'success', detail: 'Medição editada com sucesso!' });
           this.measure = measure;
+          this.router.navigate(['/measures/'])
         })
         .catch(error => this.errorHandler.handle(error));
     }
@@ -79,7 +80,7 @@ export class MeasureRegisterComponent {
       .then((addedMeasure) => {
         this.messageService.add({ severity: 'success', detail: 'Medição adicionada com sucesso!' });
         this.loadMeasure(addedMeasure.id);
-        this.router.navigate(['/measures', addedMeasure.id]);
+        this.router.navigate(['/measures']);
       })
       .catch(error => this.errorHandler.handle(error));
     }

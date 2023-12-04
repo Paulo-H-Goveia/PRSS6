@@ -1,8 +1,35 @@
 <div class="container">
 
-  <!--div class="chart-container">
-    <canvas  id="MyChart">{{ chart }}</canvas>
-  </div-->
+  <div id="chart">
+   <div id="div-chart" class="chart-container"> <canvas  id="MyChart">{{ chart }}</canvas></div>
+
+
+    <audio id="myAudio">
+      <source src="/assets/audio/emperial.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div id="bg" class="d-flex h-100">
+      <div id="box" class="justify-content-center align-self-center">
+            <div id="current-time">Hora Atual: {{ result }}
+                <div *ngIf="alarmLoading; else elseBlock" id="alarm-on">Alarm: ON</div>
+                <ng-template #elseBlock >
+                    <div id="alarm-off">Alarm: OFF</div>
+                </ng-template>
+            </div>
+            <div id="clock">{{ hours }}:{{ minutes }}</div>
+            <div id="wrapper" class="control-buttons">
+                <button class="btn btn-dark" (click)="addFirstDigit()">+</button>
+                <button class="btn btn-dark"(click)="removeFirstDigit()">-</button>
+                <button class="btn btn-dark" (click)="addSecondDigit()">+</button>
+                <button class="btn btn-dark" (click)="removeSecondDigit()">-</button>
+            </div>
+            <div id="wrapper" class="btn primary">
+                <button (click)="alarm(hours,minutes)" class="btn" id="set-alarm-button">Colocar Alarme</button>
+            </div>
+      </div>
+    </div>
+  </div>
 
   <div class="p-col-12">
     <h1 style="color: black;">Medições Glicêmicas</h1>

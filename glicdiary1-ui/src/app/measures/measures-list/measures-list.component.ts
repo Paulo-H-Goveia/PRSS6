@@ -20,6 +20,11 @@ export class MeasuresListComponent {
   measures = [];
   header = 'GlicDiary';
   public chart: any;
+  jejum: any[]=[];
+  almoco:any[]=[];
+  janta:any[]=[];
+  xAxis: any[] = [];
+  axis: any[] = [];
 
   result: any;
   res: any;
@@ -52,7 +57,7 @@ export class MeasuresListComponent {
   }
 
   list(): void{
-    this.measureService.listByUser().then(result => {this.measures = result}).catch(error => this.errorHandler.handle(error));
+    this.measureService.listByUser().then(resulta => {this.measures = resulta;}).catch(error => this.errorHandler.handle(error));
   }
 
   confirmRemoval(measure: any): void {
@@ -73,38 +78,51 @@ export class MeasuresListComponent {
     }
 
     createChart(){
+      this.measureService.listByUser().then(resulta => {
+        let list: any[] = resulta;
+        for (let index = 0; index < list.length; index++) {
+          this.xAxis[index] = list[index].date;
+          if (list[index].type == 'JEJUM') {
+            this.jejum.push(list[index].measure);
+          } else if (list[index].type == 'ALMOCO') {
+            this.almoco.push(list[index].measure);
+          } else if (list[index].type == 'JANTA') {
+            this.janta.push(list[index].measure);
+          }
+        };
+        for (let index = 0; index < this.xAxis.length; index++) {
+          if (this.xAxis[index]!=this.xAxis[index-1]) this.axis.push(this.xAxis[index]);
+        };
+        this.chart = new Chart("MyChart", {
+          type: 'bar', //this denotes tha type of chart
 
-      this.chart = new Chart("MyChart", {
-        type: 'line', //this denotes tha type of chart
+          data: {// values on X-Axis
 
-        data: {// values on X-Axis
-          labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"],
-           datasets: [
-            {
-              label: "JEJUM",
-              data: ['467','576', '572', '79', '92',
-                   '574', '573', '576'],
-              backgroundColor: 'blue'
-            },
-            {
-              label: "ALMOCO",
-              data: ['542', '542', '536', '327', '17',
-                     '0.00', '538', '541'],
-              backgroundColor: 'limegreen'
-            },
-            {
-              label: "JANTA",
-              data: ['122','222', '100', '321', '99',
-                   '123', '223', '332'],
-              backgroundColor: 'pink'
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          aspectRatio: 2.5
-        }
-
+            labels: this.axis,
+             datasets: [
+              {
+                label: "JEJUM",
+                data: this.jejum,
+                backgroundColor: 'blue'
+              },
+              {
+                label: "ALMOCO",
+                data: this.almoco,
+                backgroundColor: 'limegreen'
+              },
+              {
+                label: "JANTA",
+                data: this.janta,
+                backgroundColor: 'pink'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            aspectRatio: 2.5
+          }
+        });
+        return this.xAxis;
       });
     }
 
@@ -213,13 +231,3 @@ export class MeasuresListComponent {
     }
 
   }
-  /*goToPage(){
-    this.router.navigate(['/measures/new']);
-  }
-
-  measures = [
-    { type: 'JEJUM', measure_date: '06:00', measure: 188.0},
-    { type: 'ALMOCO', measure_date: '13:00', measure: 88.0},
-    { type: 'JANTA', measure_date: '20:00', measure: 105.0}
-  ];*/
-

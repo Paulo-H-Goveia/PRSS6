@@ -50,8 +50,8 @@ export class MeasuresListComponent {
     ){}
 
   ngOnInit(): void{
-    this.createChart();
     this.currentTime();
+    this.createChart();
     this.title.setTitle('Listagem de Medições');
     this.list();
   }
@@ -75,7 +75,7 @@ export class MeasuresListComponent {
           this.list();
           this.messageService.add({ severity: 'success', detail: 'Medição excluída com sucesso!' });
         }).catch(error => this.errorHandler.handle(error));
-    }
+  }
 
     createChart(){
       this.measureService.listByUser().then(resulta => {
@@ -122,7 +122,6 @@ export class MeasuresListComponent {
             aspectRatio: 2.5
           }
         });
-        return this.xAxis;
       });
     }
 
@@ -229,5 +228,4 @@ export class MeasuresListComponent {
       this.x = document.getElementById("myAudio");
       this.x.pause();
     }
-
-  }
+}

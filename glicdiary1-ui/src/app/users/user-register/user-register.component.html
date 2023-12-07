@@ -42,7 +42,9 @@
 
       <div class="p-col-12">
         <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          <button pButton type="submit" label="Salvar" style="background-color: rgb(4, 196, 132); margin: 2px" [disabled]="f.invalid"></button>
+          <button pButton icon="pi pi-arrow-left" pTooltip="back" tooltipPosition="top"
+          routerLink="/login" style="background-color: rgb(4, 196, 132); margin: 2px"></button>
         </p>
       </div>
     </div>

@@ -1,3 +1,8 @@
+.container{
+  display: flex;
+  margin-top: 8%;
+}
+
 .login {
   max-width: 400px;
   margin: auto;
@@ -11,4 +16,13 @@ a {
   display: flex;
   justify-content: center;
   margin: 100px 0px;
+}
+
+.login-logo{
+  display: flex;
+  background-image: url('../../../assets/images/GlicDiaryLogin.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  width: 50%;
 }

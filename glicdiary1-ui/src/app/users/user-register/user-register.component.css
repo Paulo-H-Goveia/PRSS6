@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+.img{
+  display: flex;
+  background-image: url('../../../assets/images/GlicDiaryUserRegister.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  width: 400px;
+  border-radius: 25px;
+  margin-right: 40px;
+}

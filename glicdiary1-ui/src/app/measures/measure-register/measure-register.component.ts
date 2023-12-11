@@ -26,6 +26,8 @@ export class MeasureRegisterComponent {
 
  measure = new Measure(this.auth.jwtPayload?.user_id);
 
+ minDate: Date | undefined;
+
  constructor(
     private measureService: MeasuresService,
     private auth: AuthService,
@@ -43,6 +45,7 @@ export class MeasureRegisterComponent {
         this.loadMeasure(id);
       }
       this.title.setTitle('Cadastro de Medição');
+      this.minDate = new Date();
     }
 
     get editing(): boolean {

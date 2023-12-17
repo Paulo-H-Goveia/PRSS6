@@ -75,6 +75,7 @@ export class MeasuresListComponent {
           this.list();
           this.messageService.add({ severity: 'success', detail: 'Medição excluída com sucesso!' });
         }).catch(error => this.errorHandler.handle(error));
+        window.location.reload();
   }
 
     createChart(){
